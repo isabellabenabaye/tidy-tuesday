@@ -4,6 +4,6 @@ This repo contains my entries for [#TidyTuesday](https://github.com/rfordatascie
 
 ## 2020 Week 12: [The Office](https://github.com/isabellabenabaye/tidy-tuesday/tree/master/2020/12_theoffice)   
 
-![The Office IMDb Ratings](./2020/12_theoffice/The Office IMDb Ratings.png)
+![The Office IMDb Ratings](https://github.com/isabellabenabaye/tidy-tuesday/blob/master/2020/12_theoffice/The%20Office%20IMDb%20Ratings.png?raw=true)
 <br />
-![The Office Writers](./2020/12_theoffice/The Office Writers.png)
+![The Office Writers](https://github.com/isabellabenabaye/tidy-tuesday/blob/master/2020/12_theoffice/The%20Office%20Writers.png?raw=true)

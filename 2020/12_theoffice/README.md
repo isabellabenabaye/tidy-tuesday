@@ -34,7 +34,7 @@ I also wanted to look into who wrote the episodes and see if there were
 any particular writers who did the most episodes.  
 <br /> ![Source: `schrute`. Graph: Isabella
 Benabaye.](./The%20Office%20Writers.png) Mindy Kaling wrote 20 episodes
-(including “Goodbye, Michael” `❤️`), while BJ Novak wrote the second
+(including “Goodbye, Michael” 💗), while BJ Novak wrote the second
 most at 15. Gene Stupnitsky and Lee Eisenberg are next with 14. There
 were 10 episodes without writer data.  
 <br />

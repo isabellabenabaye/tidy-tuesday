@@ -71,6 +71,7 @@ tuition_income_summary %>%
   geom_point(size = 1.8) +
   geom_line(size = 2) +
   scale_color_brewer(palette = "YlGnBu") +
+  scale_x_discrete(expand = expansion(mult = c(0,0))) +
   scale_y_continuous(labels = scales::comma)
 
 ggsave(here::here("2020", "11_college", "Tuition thru time per income level.png"), device = "png", width = 12, height = 8, dpi = 300)

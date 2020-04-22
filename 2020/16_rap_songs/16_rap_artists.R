@@ -3,6 +3,7 @@
 library(tidyverse)
 library(ggrepel)
 library(extrafont)
+library(Cairo)
 
 fonttable <- fonttable()
 #font_import(paths = c("c:/Users/isabe/FontBase"))
@@ -71,7 +72,7 @@ rankings %>%
                    segment.alpha = 0,
                    label.size = NA) # remove border
 
-ggsave(here::here("2020", "16_rap_artists", "All songs - artists.png"), device = "png", width = 12, height = 10, dpi = 300)
+ggsave(here::here("2020", "16_rap_songs", "All songs - artists.png"), device = "png", type = "cairo", width = 12, height = 10, dpi = 300)
 
 #----------------------------------------------------------------------------------------------
 # Scatter plot of all of the songs and their total points - no artists
@@ -113,7 +114,7 @@ rankings %>%
                    box.padding = 0.25,
                    segment.alpha = 0)
 
-ggsave(here::here("2020", "16_rap_artists", "All songs.png"), device = "png", width = 10, height = 9, dpi = 300)
+ggsave(here::here("2020", "16_rap_songs", "All songs.png"), device = "png", type = "cairo", width = 10, height = 9, dpi = 300)
 
 #----------------------------------------------------------------------------------------------
 # Plot of critic origins
@@ -130,4 +131,4 @@ polls %>%
   scale_y_continuous(expand = expansion(c(0,.05))) +
   theme(axis.text.x = element_text(family = "Fira Mono",size = 12)) + coord_flip()
 
-ggsave(here::here("2020", "16_rap_artists", "Critics - countries.png"), device = "png", width = 11, height = 4, dpi = 300)
+ggsave(here::here("2020", "16_rap_songs", "Critics - countries.png"), device = "png", type = "cairo", width = 11, height = 4, dpi = 300)

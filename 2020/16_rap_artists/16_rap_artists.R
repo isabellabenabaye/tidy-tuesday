@@ -1,9 +1,9 @@
 #date: April 18, 2020
 
 library(tidyverse)
-#library(RColorBrewer)
+library(ggrepel)
 library(extrafont)
-library(hexbin)
+
 fonttable <- fonttable()
 #font_import(paths = c("c:/Users/isabe/FontBase"))
 loadfonts(device = "win", quiet = TRUE) ## to load the font
@@ -15,6 +15,7 @@ theme <- theme_update(text = element_text(family = "Encode Sans Thin", size = 13
                       title = element_text(family = "Fira Mono", size = 20, color = "gray20"),
                       plot.title = element_text(family = "CHANEY Ultra Extended", size = 20, color = "gray20"),
                       plot.subtitle = element_text(family = "Gruppo", size = 25, color = "gray20"),
+                      plot.caption = element_text(family = "Encode Sans Thin", size = 12, color = "gray20"),
                       legend.text = element_text("Gruppo", size = 16),
                       axis.text = element_text(size = 14),
                       axis.line.x = element_line(color = "gray80"),
@@ -25,10 +26,22 @@ theme <- theme_update(text = element_text(family = "Encode Sans Thin", size = 13
 polls <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-04-14/polls.csv')
 rankings <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-04-14/rankings.csv')
 
-# Scatter plot of all of the songs and their total points
+# Scatter plot of all of the songs and their total points - with artists
+
+# get the labels
+top <- rankings %>% 
+  head(6)
+
+notable <- rankings %>% 
+  filter(year >= 2010 | year == min(year)) %>% 
+  head(3)
+
+labels <- rbind(top,notable) %>% 
+  mutate(label = paste0(title," by ",artist," (",year,")"))
+
 rankings %>% 
   ggplot(aes(x = year, y = points)) +
-  geom_point(aes(color = gender),size = 5, alpha = 0.3) +
+  geom_point(aes(color = gender),size = 4, alpha = 0.3) +
   labs(title = "Top Hip Hop Songs",
        subtitle = "According to 107 critics worldwide",
        x = "",
@@ -37,19 +50,71 @@ rankings %>%
   scale_color_manual(values = c("#f35588","#05dfd7","#ffac41"),
                      labels = c("female rapper", "male rapper","mixed")) +
   theme(
+    plot.title = element_text(size = 30,),
+    plot.subtitle = element_text(size = 35),
     legend.position = c(.95, .95),
     legend.justification = c("right", "top"),
     legend.margin = margin(6, 6, 6, 6)
-  )
+  ) +
+  geom_text_repel(data = labels, 
+                   aes(label = label),
+                   family = "Encode Sans Thin",
+                   size = 4,
+                   nudge_y = 5,
+                   #nudge_x = 5,
+                   box.padding = 0.25,
+                   segment.alpha = 0) # remove border
 
-ggsave(here::here("2020", "16_rap_artists", "All songs.png"), device = "png", width = 8, height = 6, dpi = 300)
+ggsave(here::here("2020", "16_rap_artists", "All songs - artists.png"), device = "png", width = 12, height = 8, dpi = 300)
+
+# Scatter plot of all of the songs and their total points - no artists
+
+# get the labels
+top <- rankings %>% 
+  head(6)
+
+notable <- rankings %>% 
+  filter(year >= 2010 | year == min(year)) %>% 
+  head(3)
+
+labels <- rbind(top,notable)
+
+rankings %>% 
+  ggplot(aes(x = year, y = points)) +
+  geom_point(aes(color = gender),size = 4.5, alpha = 0.3) +
+  labs(title = "Top Hip Hop Songs",
+       subtitle = "According to 107 critics worldwide",
+       x = "",
+       y = "Critic Rating",
+       color = "",
+       caption = "Critic rating: Each critic voted for five songs, ranking them from one (favourite) to five (5th favourite).\nBBC Music awarded 10 points for first ranked track, eight points for second ranked track, \nand so on down to two points for fifth place.The song with the most points won.\nSource: BBC Music (2019)") +
+  scale_color_manual(values = c("#f35588","#05dfd7","#ffac41"),
+                     labels = c("female rapper", "male rapper","mixed")) +
+  theme(
+    plot.title = element_text(size = 30,),
+    plot.subtitle = element_text(size = 35),
+    legend.position = c(.9, .9),
+    legend.justification = c("right", "top"),
+    legend.margin = margin(6, 6, 6, 6)
+  ) +
+  geom_text_repel(data = labels, 
+                   aes(label = title),
+                   family = "Encode Sans Thin",
+                   size = 4.5,
+                   nudge_y = 5,
+                   nudge_x = ,
+                   box.padding = 0.25,
+                   segment.alpha = 0)
+
+ggsave(here::here("2020", "16_rap_artists", "All songs.png"), device = "png", width = 10, height = 9, dpi = 300)
+
 
 # Plot of critic origins
 polls %>% 
   distinct(critic_name,critic_country) %>% 
   count(critic_country) %>% 
   ggplot(aes(x = reorder(critic_country,n), y = n)) +
-  geom_bar(stat = "identity", fill = "#4cd3c2") +
+  geom_bar(stat = "identity", fill = "#baf1a1") +
   labs(title = "But how biased is this opinon?",
        subtitle = "Most of the critics are from the US",
        x = "",

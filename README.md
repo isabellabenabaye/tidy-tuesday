@@ -11,4 +11,5 @@ Read more about my output [here](https://github.com/isabellabenabaye/tidy-tuesda
 ## 2020 Week 16: [Best Rap Songs (BBC Music)](https://github.com/isabellabenabaye/tidy-tuesday/tree/master/2020/16_rap_songs)   
 Read more about my output [here](https://github.com/isabellabenabaye/tidy-tuesday/blob/master/2020/16_rap_songs/README.md).   
 ![Top Rap Songs](https://github.com/isabellabenabaye/tidy-tuesday/blob/master/2020/16_rap_artists/All%20songs.png?raw=true)
+<br />   
 ![Critics](https://github.com/isabellabenabaye/tidy-tuesday/blob/master/2020/16_rap_artists/Critics%20-%20countries.png?raw=true)

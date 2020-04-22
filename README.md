@@ -9,6 +9,6 @@ Read more about my output [here](https://github.com/isabellabenabaye/tidy-tuesda
 ![The Office Writers](https://github.com/isabellabenabaye/tidy-tuesday/blob/master/2020/12_theoffice/The%20Office%20Writers.png?raw=true)
 
 ## 2020 Week 16: [Best Rap Songs (BBC Music)](https://github.com/isabellabenabaye/tidy-tuesday/tree/master/2020/16_rap_songs)   
-Read more about my output [here](https://github.com/isabellabenabaye/tidy-tuesday/blob/master/2020/16_rap_songs/README.md). 
-![Top Rap Songs](https://github.com/isabellabenabaye/tidy-tuesday/blob/master/2020/16_rap_artists/All songs.png)
-![Critics](https://github.com/isabellabenabaye/tidy-tuesday/blob/master/2020/16_rap_artists/Critics - countries.png)
+Read more about my output [here](https://github.com/isabellabenabaye/tidy-tuesday/blob/master/2020/16_rap_songs/README.md).   
+![Top Rap Songs](https://github.com/isabellabenabaye/tidy-tuesday/blob/master/2020/16_rap_artists/All%20songs.png?raw=true)
+![Critics](https://github.com/isabellabenabaye/tidy-tuesday/blob/master/2020/16_rap_artists/Critics%20-%20countries.png?raw=true)

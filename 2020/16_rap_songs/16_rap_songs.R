@@ -7,11 +7,10 @@ library(Cairo)
 library(gganimate)
 
 fonttable <- fonttable()
-#font_import(paths = c("c:/Users/isabe/FontBase"))
+font_import(paths = c("C:/Users/isabe/FontBase/2020-04-08/CHANEY-ULTRA-EXTENDED/CHANEY-ULTRA-EXTENDED/Webfont/CHANEY-UltraExtended-webfont"))
 loadfonts(device = "win", quiet = TRUE) ## to load the font
 
-#----------------------------------------------------------------------------------------------
-# Set theme
+# Set theme-----
 
 theme_set(theme_minimal())
 theme <- theme_update(text = element_text(family = "Source Sans Pro Light", size = 13),
@@ -24,14 +23,12 @@ theme <- theme_update(text = element_text(family = "Source Sans Pro Light", size
                       axis.line.x = element_line(color = "gray80"),
                       axis.line.y = element_line(color = "gray80"))
 
-#----------------------------------------------------------------------------------------------
-# Get the Data
+# Get the Data-----
 
 polls <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-04-14/polls.csv')
 rankings <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-04-14/rankings.csv')
 
-#----------------------------------------------------------------------------------------------
-# Scatter plot of all of the songs and their total points - with artists
+# Scatter plot of all of the songs and their total points - with artists-----
 
 # get the labels
 top <- rankings %>% 
@@ -81,8 +78,7 @@ rankings %>%
 
 ggsave(here::here("2020", "16_rap_songs", "All songs - artists.png"), device = "png", type = "cairo", width = 12, height = 10, dpi = 300)
 
-#----------------------------------------------------------------------------------------------
-# Scatter plot of all of the songs and their total points - no artists
+# Scatter plot of all of the songs and their total points - no artists-----
 
 # get the labels
 
@@ -129,8 +125,7 @@ rankings %>%
 
 ggsave(here::here("2020", "16_rap_songs", "All songs.png"), device = "png", type = "cairo", width = 10, height = 9, dpi = 300)
 
-#----------------------------------------------------------------------------------------------
-# Plot of critic origins
+# Plot of critic origins-----
 polls %>% 
   distinct(critic_name,critic_country) %>% 
   count(critic_country) %>% 
@@ -146,8 +141,7 @@ polls %>%
 
 ggsave(here::here("2020", "16_rap_songs", "Critics - countries.png"), device = "png", type = "cairo", width = 11, height = 4, dpi = 300)
 
-#----------------------------------------------------------------------------------------------
-# Animated plot (April 23, 2020)
+# Animated plot (April 23, 2020)-----
 
 songs_animated <- rankings %>% 
   ggplot(aes(x = year, y = points)) +

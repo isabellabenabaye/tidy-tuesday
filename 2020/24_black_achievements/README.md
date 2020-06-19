@@ -1,0 +1,1 @@
+![](https://github.com/isabellabenabaye/tidy-tuesday/blob/master/2020/24_black_achievements/black-achievements.png?raw=true)

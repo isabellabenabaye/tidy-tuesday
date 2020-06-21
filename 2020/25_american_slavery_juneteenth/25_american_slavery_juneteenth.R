@@ -48,7 +48,7 @@ black_pop <- census %>%
 theme_set(theme_minimal())
 theme <- theme_update(text = element_text(family = "IBM Plex Mono", size = 13),
                       title = element_text(size = 24, margin = margin(t = 0, r = 100, b = 0, l = 0)),
-                      plot.title = element_markdown(face = "bold", size = 27, lineheight = 1.2),
+                      plot.title = element_markdown(face = "bold", size = 26, lineheight = 1.2),
                       plot.caption = element_text(size = 12, color = "gray50"),
                       axis.text = element_text(size = 20),
                       axis.title.x = element_blank(),
@@ -58,7 +58,7 @@ theme <- theme_update(text = element_text(family = "IBM Plex Mono", size = 13),
                       panel.grid = element_blank(),
                       panel.grid.major.y = element_line(color = "gray90"),
                       legend.text = element_text(size = 20, face = "bold"),
-                      plot.margin = margin(70, 50, 30, 35),
+                      plot.margin = margin(70, 80, 30, 35),
                       plot.background = element_rect(fill = "#F7F7F7", color = "#F7F7F7"),
                       legend.position = c(.15, .51),
                       legend.direction = "horizontal")
@@ -67,18 +67,19 @@ theme <- theme_update(text = element_text(family = "IBM Plex Mono", size = 13),
 # Plot-----
 plot <- black_pop %>% 
   ggplot(aes(year,population)) +
-  labs(title = "How many slaves were there in the U.S. before the last of<br>them were proclaimed <span style = 'color:#E09D00;'>free</span> in Texas on <span style = 'color:#E09D00;'>June 19, 1865</span>?",
+  labs(title = "How many people were enslaved in the U.S. before the last of<br>them were proclaimed <span style = 'color:#E09D00;'>free</span> in Texas on <span style = 'color:#E09D00;'>June 19, 1865</span>?",
        y = "Black Population", fill = "",
        caption = "Data: U.S. Census Bureau | Plot: @_isabellamb") +
   geom_col(aes(fill = group), width = 7) +
-  annotate("text", x = 1785, y = 4800000, label = "The number of slaves in the U.S. grew from 700,000 in 1790 to 4 million before the abolishment of slavery.\nBased on every census before 1870, at least 85% of the Black population were enslaved.\nUntil they were all freed, more than 94% of the slaves in the U.S. were in the South.", 
-           hjust = 0, vjust = 1, family = "Rubik",size = 6.1) +
+  annotate("text", x = 1785, y = 5050000, label = "The number of enslaved people in the U.S. grew from 700,000 in 1790 to 4 million before the abolishment of slavery.\nBased on every census before 1870, at least 85% of the Black population were enslaved.\nUntil they were all freed, more than 94% of the slaves in the U.S. were in the South.", 
+           hjust = 0, vjust = 1, family = "Rubik",size = 6.15) +
   annotate("text", x = 1786, y = 3500000, label = "The first Juneteenth was celebrated in 1866.", 
            hjust = 0, family = "IBM Plex Mono", fontface = "bold", size = 7) +
   scale_x_continuous(breaks = seq(1790,1870,10), expand = expansion(0,0)) +
   scale_y_continuous(labels = scales::label_number(suffix = "M", scale = 1e-6,accuracy = 1), ## millions labels
                      breaks = seq(1000000,4000000,1000000),
-                     expand = expansion(0,0)) +
-  scale_fill_manual(values = c("#FFD166", "gray20"), labels = c("Free","Slaves")) 
+                     expand = expansion(0,0),
+                     limits = c(0,5100000)) +
+  scale_fill_manual(values = c("#FFD166", "gray20"), labels = c("Free","Enslaved")) 
 
-plot + ggsave("juneteenth.png", device = "png", type = "cairo", width = 16, height = 14, dpi = 300)
+plot + ggsave("juneteenth.png", device = "png", type = "cairo", width = 15.5, height = 14, dpi = 300)

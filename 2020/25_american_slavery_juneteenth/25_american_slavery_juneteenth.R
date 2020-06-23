@@ -71,8 +71,8 @@ plot <- black_pop %>%
        y = "Black Population", fill = "",
        caption = "Data: U.S. Census Bureau | Plot: @_isabellamb") +
   geom_col(aes(fill = group), width = 7) +
-  annotate("text", x = 1785, y = 5050000, label = "The number of enslaved people in the U.S. grew from 700,000 in 1790 to 4 million before the abolishment of slavery.\nBased on every census before 1870, at least 85% of the Black population were enslaved.\nUntil they were all freed, more than 94% of the slaves in the U.S. were in the South.", 
-           hjust = 0, vjust = 1, family = "Rubik",size = 6.15) +
+  annotate("text", x = 1785, y = 5050000, label = "The number of enslaved people in the U.S. grew from 700,000 in 1790 to 4 million by the abolishment of slavery.\nBased on every census before 1870, at least 85% of the Black population were enslaved.\nUntil they were all freed, more than 94% of the slaves in the U.S. were in the South.", 
+           hjust = 0, vjust = 1, family = "Rubik",size = 6.4) +
   annotate("text", x = 1786, y = 3500000, label = "The first Juneteenth was celebrated in 1866.", 
            hjust = 0, family = "IBM Plex Mono", fontface = "bold", size = 7) +
   scale_x_continuous(breaks = seq(1790,1870,10), expand = expansion(0,0)) +

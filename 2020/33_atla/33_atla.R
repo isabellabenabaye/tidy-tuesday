@@ -1,19 +1,25 @@
+# This plot is a remake of Jack Davidson's ATLA #TidyTuesday viz - https://twitter.com/JDavison_/status/1292896713003409410?s=20
+
+# Code heavily influenced by:
+# Jack Davidson's ATLA #TidyTuesday viz - https://github.com/jack-davison/TidyTuesday/blob/master/R/2020_08_11_Avatar.R
+# Cedric Scherer - The Office Ratings by IMDb & data.world - https://github.com/Z3tt/TidyTuesday/blob/master/R/2020_12_TheOffice.Rmd
+
 library(tidyverse)
 library(ib)
-library(ggimage)
-extrafont::loadfonts(device = "win", quiet = TRUE) ## to load the font
+extrafont::loadfonts(device = "win", quiet = TRUE) ## to load the fonts
 
-
-# Load data
+# Load data ----
 avatar <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-08-11/avatar.csv')
 
+# Prepare the data -----
 avatar_episodes <- avatar %>% 
   distinct(book, book_num, chapter, chapter_num, imdb_rating) %>% 
   mutate(episode_num = row_number(),
-         imdb_rating = if_else(episode_num == 20, 9.7, imdb_rating)) %>%  # rating taken from IMDB on 8/14/2020
+         imdb_rating = if_else(episode_num == 20, 9.7, imdb_rating)) %>%  # fill in missing value - rating taken from IMDB on 8/14/2020
   group_by(book) %>% 
   mutate(book_avg_rating = mean(imdb_rating))
 
+# for the average IMDB rating per book line - geom_line
 book_avg <- avatar_episodes %>% 
   summarize(start_x = min(episode_num) - 0.1,
          end_x = max(episode_num) + 0.1,
@@ -22,9 +28,12 @@ book_avg <- avatar_episodes %>%
                names_to = "type",
                values_to = "x")
 
+# for the book labels - geom_text
 book_labels <- avatar_episodes %>% 
   summarise(x = min(episode_num),
             y = unique(book_avg_rating))
+
+# Plots -----
 
 # Avatar logo
 logo <- png::readPNG('2020/33_atla/atla_logo.png')
@@ -46,10 +55,8 @@ theme_set(theme_ib(title_family = "Herculanum", text_family = "Herculanum", bg_c
 update_geom_fonts_ib(family = "Herculanum")
 
 avatar_episodes %>% 
-  ggplot(aes(episode_num, imdb_rating, 
-             color = book)) +
+  ggplot(aes(episode_num, imdb_rating, color = book)) +
   labs(y = "IMDB Rating", caption = "Data: {appa} by Avery Robbins | @_isabellamb") +
-  scale_size_identity() +
   geom_text(data = book_labels,
             aes(x = x, y = y, label = book),
             size = 22, alpha = 0.4, vjust = 0, hjust = 0) +

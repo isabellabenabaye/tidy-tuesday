@@ -8,6 +8,9 @@ This repo contains my entries for [#TidyTuesday](https://github.com/rfordatascie
 ## Week 25: [Juneteenth 2020](https://github.com/isabellabenabaye/tidy-tuesday/tree/master/2020/25_american_slavery_juneteenth)
 ![](https://github.com/isabellabenabaye/tidy-tuesday/blob/master/2020/25_american_slavery_juneteenth/juneteenth.png?raw=true)
 
+## Week 33: [Avatar: The Last Airbender IMDb Ratings](https://github.com/isabellabenabaye/tidy-tuesday/tree/master/2020/33_atla)
+![](https://github.com/isabellabenabaye/tidy-tuesday/blob/master/2020/33_atla/avatar_episodes.png?raw=true)
+
 ## 2020 Week 12: [The Office](https://github.com/isabellabenabaye/tidy-tuesday/tree/master/2020/12_theoffice)   
 Read more about my output [here](https://github.com/isabellabenabaye/tidy-tuesday/blob/master/2020/12_theoffice/README.md).   
 <br />

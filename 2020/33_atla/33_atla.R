@@ -1,7 +1,7 @@
-# This plot is a remake of Jack Davidson's ATLA #TidyTuesday viz - https://twitter.com/JDavison_/status/1292896713003409410?s=20
+# This plot is a remake of Jack Davison's ATLA #TidyTuesday viz - https://twitter.com/JDavison_/status/1292896713003409410?s=20
 
 # Code heavily influenced by:
-# Jack Davidson's ATLA #TidyTuesday viz - https://github.com/jack-davison/TidyTuesday/blob/master/R/2020_08_11_Avatar.R
+# Jack Davison's ATLA #TidyTuesday viz - https://github.com/jack-davison/TidyTuesday/blob/master/R/2020_08_11_Avatar.R
 # Cedric Scherer - The Office Ratings by IMDb & data.world - https://github.com/Z3tt/TidyTuesday/blob/master/R/2020_12_TheOffice.Rmd
 
 library(tidyverse)
